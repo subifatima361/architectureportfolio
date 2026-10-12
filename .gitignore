@@ -1,0 +1,5 @@
+output/drawings/_raw_*
+output/renders/_preview_*
+__pycache__/
+*.blend1
+venv/
