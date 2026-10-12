@@ -418,7 +418,7 @@ def _rand_unit(rng):
 
 
 def make_tree(name, c, loc, height=8.0, seed=1, spread=1.0, leaf_mat=None, bark_mat=None,
-              leaf_len=0.14, leaf_w=0.05, leaves_per_tip=80, depth=5, cluster_r=0.55):
+              leaf_len=0.14, leaf_w=0.05, leaves_per_tip=34, depth=5, cluster_r=0.6):
     """Broadleaf (neem / rain tree style) via recursive branching."""
     rng = random.Random(seed)
     cu = bpy.data.curves.new(name + "_wood", 'CURVE')
@@ -442,9 +442,10 @@ def make_tree(name, c, loc, height=8.0, seed=1, spread=1.0, leaf_mat=None, bark_
         for i, q in enumerate(pts):
             sp.points[i].co = (q.x, q.y, q.z, 1)
             sp.points[i].radius = radius * (1 - 0.45 * i / n)
+        if lvl >= depth - 1:
+            for q in pts[2:]:
+                tips.append((q, dd))
         if lvl >= depth:
-            tips.append((pts[-1], dd))
-            tips.append((pts[-3], dd))
             return
         kids = 3 if lvl == 0 else rng.choice((2, 3, 3, 4))
         for k in range(kids):
