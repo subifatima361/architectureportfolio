@@ -206,11 +206,7 @@ def scene_park(sc, grass_dense=True):
         rr = random.Random(400 + i)
         fy = rr.uniform(40, 55) if i < 18 else -rr.uniform(45, 60)
         E.make_tree(f"FarTree{i}", c, (rr.uniform(-70, 70), fy, 0), rr.uniform(10, 15), seed=600 + i,
-                    spread=1.2, leaf_mat=neem, bark_mat=bark, leaves_per_tip=30, depth=3, cluster_r=0.8, leaf_len=0.12, leaf_w=0.05)
-    for i in range(16):
-        rr = random.Random(700 + i)
-        E.make_building(f"City{i}", c, rr.uniform(-160, 160), rr.uniform(200, 260), rr.uniform(12, 22), 14,
-                        rr.randint(3, 7), 800 + i, facing=-1, haze=((0.84, 0.86, 0.86), 60.0, 0.96))
+                    spread=1.2, leaf_mat=neem, bark_mat=bark, leaves_per_tip=45, depth=4, cluster_r=0.8, leaf_len=0.16, leaf_w=0.06)
     # Gizri stone boundary wall with railing, far right
     stone = E.mat_stone_wall()
     E.box_obj("ParkWall", c, (0, 36, 0.6), (140, 0.45, 1.2), stone)
