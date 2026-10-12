@@ -13,6 +13,17 @@ panels make the seat, back and canopy.
 | `output/renders/` | Cycles renders: urban Karachi footpath, Burns Garden at peak sun, detail views |
 | `output/model/` | `urban_canopy_bench.blend` (editable), `.obj` + `.mtl`, `.fbx` for SketchUp/Rhino import |
 
+### Image list
+
+**Drawings** (`output/drawings/`): `01_front_elevation`, `02_side_elevation`, `03_plan` (cut at 45"),
+`04_isometric` (30°), `05_axonometric` (45° plan oblique), `06_exploded_axonometric` (15 numbered parts + details A/B/C).
+
+**Renders** (`output/renders/`, 2100 × 1400):
+`urban` and `urban_side` (concrete footpath, Karachi street with shops, neem trees, painted kerb),
+`park_noon` and `park_wide` (Burns Garden at peak sun), `det_rear` (back rail and fixings),
+`det_arm` (armrest bend and stringer cleats), `det_canopy` (canopy underside, rib and post),
+`det_foot` (foot plate and anchors), `det_terrazzo` (recycled-plastic terrazzo edge).
+
 ## Key dimensions (inches, based on standard anthropometrics)
 
 | | |
