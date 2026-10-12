@@ -181,11 +181,11 @@ def scene_park(sc, grass_dense=True):
     gm = E.mat_grass_hair()
     # dense hair grass around the bench and toward the camera
     if grass_dense:
-        E.grass_patch("Grass_Back", c, (0, 4.6, -0.005), (26, 10.5), count=140000, length=0.08, mat=gm, ground_mat=lawn_m, seed=1, children=12)
-        E.grass_patch("Grass_Far", c, (0, 15.5, -0.005), (40, 11.5), count=90000, length=0.07, mat=gm, ground_mat=lawn_m, seed=6, children=10)
-        E.grass_patch("Grass_Front", c, (0, -7.5, -0.005), (26, 8.6), count=110000, length=0.08, mat=gm, ground_mat=lawn_m, seed=2, children=12)
-        E.grass_patch("Grass_L", c, (-1.95, 0.2, -0.005), (1.3, 1.7), count=2500, length=0.08, mat=gm, ground_mat=lawn_m, seed=4, children=12)
-        E.grass_patch("Grass_R", c, (1.95, 0.2, -0.005), (1.3, 1.7), count=2500, length=0.08, mat=gm, ground_mat=lawn_m, seed=5, children=12)
+        E.grass_patch("Grass_Back", c, (0, 5.5, -0.005), (26, 8.7), count=80000, length=0.08, mat=gm, ground_mat=lawn_m, seed=1, children=8)
+        E.grass_patch("Grass_Far", c, (0, 15.5, -0.005), (40, 11.5), count=40000, length=0.07, mat=gm, ground_mat=lawn_m, seed=6, children=6)
+        E.grass_patch("Grass_Front", c, (0, -7.5, -0.005), (26, 8.6), count=80000, length=0.08, mat=gm, ground_mat=lawn_m, seed=2, children=8)
+        E.grass_patch("Grass_L", c, (-7.15, 0.25, -0.005), (11.7, 1.8), count=9000, length=0.08, mat=gm, ground_mat=lawn_m, seed=4, children=12)
+        E.grass_patch("Grass_R", c, (7.15, 0.25, -0.005), (11.7, 1.8), count=9000, length=0.08, mat=gm, ground_mat=lawn_m, seed=5, children=12)
     # palms and neem
     for i, (x, y, h, ln) in enumerate(((-7.5, 7.0, 9.5, (0.06, 0.02)), (-10.5, 10.5, 11.0, (-0.04, 0.05)),
                                        (9.0, 11.0, 10.0, (0.05, -0.03)), (14.5, 7.5, 8.5, (-0.06, 0.0)),
@@ -205,8 +205,8 @@ def scene_park(sc, grass_dense=True):
                     spread=1.2, leaf_mat=neem, bark_mat=bark, leaves_per_tip=30, depth=3, cluster_r=0.8, leaf_len=0.12, leaf_w=0.05)
     for i in range(16):
         rr = random.Random(700 + i)
-        E.make_building(f"City{i}", c, rr.uniform(-160, 160), rr.uniform(150, 220), rr.uniform(12, 22), 14,
-                        rr.randint(5, 11), 800 + i, facing=-1, haze=((0.84, 0.86, 0.86), 60.0, 0.93))
+        E.make_building(f"City{i}", c, rr.uniform(-160, 160), rr.uniform(200, 260), rr.uniform(12, 22), 14,
+                        rr.randint(3, 7), 800 + i, facing=-1, haze=((0.84, 0.86, 0.86), 60.0, 0.96))
     # Gizri stone boundary wall with railing, far right
     stone = E.mat_stone_wall()
     E.box_obj("ParkWall", c, (0, 36, 0.6), (140, 0.45, 1.2), stone)
@@ -239,7 +239,7 @@ SHOTS = {
 def run(shot):
     scn, loc, tgt, lens, fst, (el, az) = SHOTS[shot]
     sc = reset()
-    setup_render(sc, samples=128 if shot.startswith("det") else 96)
+    setup_render(sc, samples=64)
     bench(sc)
     if scn == "urban":
         scene_urban(sc)
