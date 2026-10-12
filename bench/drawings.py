@@ -438,7 +438,7 @@ def sheet_plan(sc, parts):
     # canopy above the cut plane: dashed outline
     for (xa, ya), (xb, yb) in [((-L2, y0), (L2, y0)), ((L2, y0), (L2, y1)), ((L2, y1), (-L2, y1)), ((-L2, y1), (-L2, y0))]:
         s.dashed(p(xa, ya), p(xb, yb), dash=40, gap=18, w=4, fill=(70, 70, 75))
-    s.note(Vector(p(-L2, y1)) + Vector((20, 50)), "CANOPY ABOVE (DASHED)", 38, anchor="lm", weight="m", fill=GREY)
+    s.note(Vector(p(-L2, y0)) + Vector((0, 50)), "CANOPY ABOVE (DASHED)", 38, anchor="lm", weight="m", fill=GREY)
     # north arrow / orientation
     na = Vector((W - MARGIN - 230, MARGIN + 230))
     s.d.ellipse([na.x - 90, na.y - 90, na.x + 90, na.y + 90], outline=INK, width=4)

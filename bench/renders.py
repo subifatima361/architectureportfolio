@@ -166,8 +166,8 @@ def scene_park(sc, grass_dense=True):
     c = E.coll("Context")
     neem, palm, dry, bark, pbark = leaf_mats()
     conc = E.mat_concrete("Concrete_Path", joint=1.5, tint=(0.70, 0.67, 0.62))
-    E.box_obj("Path", c, (0, -1.9, -0.06), (80, 2.4, 0.15), conc)
-    E.box_obj("Bench_Pad", c, (0, 0.2, -0.06), (2.6, 1.8, 0.15), conc)
+    E.box_obj("Path", c, (0, -1.9, -0.075), (80, 2.4, 0.15), conc)
+    E.box_obj("Bench_Pad", c, (0, 0.2, -0.075), (2.6, 1.8, 0.15), conc)
     # path edging (brick-red Karachi park kerb)
     edge = E.mat_simple("Path_Edge", (0.62, 0.36, 0.26), 0.9)
     for y in (-3.13, -0.67):
@@ -191,17 +191,21 @@ def scene_park(sc, grass_dense=True):
                                        (9.0, 11.0, 10.0, (0.05, -0.03)), (14.5, 7.5, 8.5, (-0.06, 0.0)),
                                        (-22, 18, 12, (0.03, 0.03)), (26, 20, 11, (0.0, 0.05)))):
         E.make_palm(f"Palm{i}", c, (x, y, 0), h, seed=30 + i, lean=ln, leaf_mat=palm, bark_mat=pbark)
+    for i, (x, y, h) in enumerate(((-11, -12, 10), (16, -19, 11), (8, -33, 12))):
+        E.make_palm(f"PalmS{i}", c, (x, y, 0), h, seed=90 + i, lean=(0.04, -0.03), leaf_mat=palm, bark_mat=pbark)
     for i, (x, y, h, s) in enumerate(((4.5, 8.0, 9.5, 1.1), (-3.0, 16.0, 12.0, 1.2), (18, 15, 11, 1.0),
                                       (-16, 9, 10, 1.1), (-30, 25, 13, 1.2), (34, 28, 13, 1.2), (8, 30, 14, 1.3),
-                                      (-8, -14, 10, 1.0), (12, -16, 11, 1.1))):
+                                      (-8, -14, 10, 1.0), (12, -16, 11, 1.1), (-17, -21, 12, 1.2), (4, -26, 12, 1.1),
+                                      (22, -11, 10, 1.0), (-26, -8, 11, 1.2), (30, -24, 13, 1.2), (-6, -38, 13, 1.2))):
         E.make_tree(f"Neem{i}", c, (x, y, 0), h, seed=50 + i, spread=s, leaf_mat=neem, bark_mat=bark)
     # far tree line and city beyond, hazy
     hz = HAZE_PARK
     for m_ in (neem, palm, bark, pbark):
         pass
-    for i in range(18):
+    for i in range(30):
         rr = random.Random(400 + i)
-        E.make_tree(f"FarTree{i}", c, (rr.uniform(-70, 70), rr.uniform(40, 55), 0), rr.uniform(10, 15), seed=600 + i,
+        fy = rr.uniform(40, 55) if i < 18 else -rr.uniform(45, 60)
+        E.make_tree(f"FarTree{i}", c, (rr.uniform(-70, 70), fy, 0), rr.uniform(10, 15), seed=600 + i,
                     spread=1.2, leaf_mat=neem, bark_mat=bark, leaves_per_tip=30, depth=3, cluster_r=0.8, leaf_len=0.12, leaf_w=0.05)
     for i in range(16):
         rr = random.Random(700 + i)
